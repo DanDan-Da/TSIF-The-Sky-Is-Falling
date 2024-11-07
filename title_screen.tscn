@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfx5lvq88fx51"]
+
+[ext_resource type="Texture2D" uid="uid://c134r76u5sq8y" path="res://PNGs/maxresdefault-906700495.jpg" id="1_v8g08"]
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TitleScreenPlaceholder" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_v8g08")
