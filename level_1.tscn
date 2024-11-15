@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=8 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
 [ext_resource type="PackedScene" uid="uid://qpwid257x8d5" path="res://Player.tscn" id="2_hgtvx"]
 [ext_resource type="PackedScene" uid="uid://bwe3osgqx8mgs" path="res://Sphere.tscn" id="3_klddj"]
 [ext_resource type="PackedScene" uid="uid://dduoi18ggiwdy" path="res://coin.tscn" id="4_ue4bp"]
+[ext_resource type="PackedScene" uid="uid://dx7ftb0uhf76x" path="res://donut.tscn" id="5_70xok"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_k2vmk"]
 
@@ -58,3 +59,6 @@ transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -2.1133, 1
 
 [node name="Coin" parent="Objects" instance=ExtResource("4_ue4bp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20023, 2.49549)
+
+[node name="Donut" parent="." instance=ExtResource("5_70xok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 16, 1)
