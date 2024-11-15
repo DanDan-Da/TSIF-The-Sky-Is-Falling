@@ -1,13 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1vgtr6waxedg"]
+[gd_scene load_steps=6 format=3 uid="uid://c1vgtr6waxedg"]
+
+[ext_resource type="Script" path="res://block.gd" id="1_c5npe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grofv"]
+albedo_color = Color(0.49, 0, 0, 1)
+metallic = 0.14
+roughness = 0.84
 
 [sub_resource type="BoxMesh" id="BoxMesh_i7pvf"]
+material = SubResource("StandardMaterial3D_grofv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgcpb"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pj6mc"]
+
 [node name="Block" type="RigidBody3D"]
+script = ExtResource("1_c5npe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_i7pvf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kgcpb")
+
+[node name="HurtBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(0.865, 0, 0, 0, 0.865, 0, 0, 0, 0.865, 0, -0.121055, 0)
+shape = SubResource("BoxShape3D_pj6mc")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
