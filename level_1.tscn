@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=13 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
+[ext_resource type="Script" path="res://block.gd" id="2_1m424"]
 [ext_resource type="PackedScene" uid="uid://qpwid257x8d5" path="res://Player.tscn" id="2_hgtvx"]
 [ext_resource type="PackedScene" uid="uid://bwe3osgqx8mgs" path="res://Sphere.tscn" id="3_klddj"]
 [ext_resource type="PackedScene" uid="uid://dduoi18ggiwdy" path="res://coin.tscn" id="4_ue4bp"]
@@ -34,11 +35,12 @@ sky = SubResource("Sky_2c0uy")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.73
 ssr_enabled = true
+ssao_enabled = true
 
 [node name="Level1" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.83266, 0.553784, 0, -0.553784, 0.83266, 0, 5.32374, 8.1686)
+transform = Transform3D(1, 0, 0, 0, 0.886317, 0.46308, 0, -0.46308, 0.886317, 0, 9.42881, 12.3415)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.486256, 0.871861, -0.0584284, -0.317426, 0.238541, 0.91779, 0.814123, -0.427734, 0.392743, -3.53146, 6.63825, 2.55882)
@@ -59,6 +61,7 @@ shape = SubResource("BoxShape3D_8ktwu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10435, 1.04795, -1.85485)
 
 [node name="Objects" type="Node3D" parent="."]
+script = ExtResource("2_1m424")
 
 [node name="Sphere" parent="Objects" instance=ExtResource("3_klddj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.857512, 17.566, 0.232391)
@@ -70,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.489546, 7.09876, 0.4853)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99598, 20.366, 0.658227)
 
 [node name="Block" parent="Objects" instance=ExtResource("1_r01fo")]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -1.85749, 12.8191, -2.52711)
+transform = Transform3D(0.866025, 0.5, 0, -0.499837, 0.865743, -0.0255314, -0.0127657, 0.0221108, 0.999674, -1.85749, 12.8191, -2.52711)
 
 [node name="Block2" parent="Objects" instance=ExtResource("1_r01fo")]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0.27184, 4.02586, 0)
