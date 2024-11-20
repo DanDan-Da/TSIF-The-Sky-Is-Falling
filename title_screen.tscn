@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfx5lvq88fx51"]
+[gd_scene load_steps=10 format=3 uid="uid://cfx5lvq88fx51"]
 
-[ext_resource type="Texture2D" uid="uid://c134r76u5sq8y" path="res://PNGs/maxresdefault-906700495.jpg" id="1_v8g08"]
 [ext_resource type="Script" path="res://title_screen.gd" id="1_vkuvb"]
+[ext_resource type="VideoStream" path="res://MainMenu/output_video.ogv" id="2_fhjam"]
+[ext_resource type="FontFile" uid="uid://bcqp6l8lhkukb" path="res://MainMenu/InfoFontEnglish.ttf" id="3_116nx"]
+[ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="3_tn51j"]
+[ext_resource type="Shader" path="res://title_screen.gdshader" id="4_mli4t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oc5a"]
+render_priority = 0
+shader = ExtResource("4_mli4t")
+
+[sub_resource type="Environment" id="Environment_nncyf"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.84
+glow_blend_mode = 1
+glow_hdr_scale = 2.44
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1rv6"]
+render_priority = 0
+shader = ExtResource("4_mli4t")
+
+[sub_resource type="Environment" id="Environment_fsql0"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.73
+glow_strength = 0.84
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_vkuvb")
@@ -10,25 +34,55 @@ script = ExtResource("1_vkuvb")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="TitleScreenPlaceholder" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(576.25, 325.5)
-scale = Vector2(0.899609, 0.904167)
-texture = ExtResource("1_v8g08")
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ParallaxBackground"]
+offset_right = 1152.0
+offset_bottom = 653.0
+stream = ExtResource("2_fhjam")
+autoplay = true
+expand = true
+loop = true
 
-[node name="Play" type="Button" parent="."]
+[node name="Start" type="Button" parent="."]
+modulate = Color(1, 1, 2, 1)
+material = SubResource("ShaderMaterial_4oc5a")
 offset_left = 394.0
-offset_top = 68.0
+offset_top = 349.0
 offset_right = 709.0
-offset_bottom = 218.0
-text = "Play"
+offset_bottom = 499.0
+theme_override_colors/font_color = Color(0.983007, 0.993056, 1, 1)
+theme_override_colors/font_outline_color = Color(0.349, 0.267, 1, 0.833)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_116nx")
+theme_override_font_sizes/font_size = 48
+text = "Start Game"
+flat = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Start"]
+environment = SubResource("Environment_nncyf")
 
 [node name="Quit" type="Button" parent="."]
+modulate = Color(1, 1, 2, 1)
+material = SubResource("ShaderMaterial_r1rv6")
 offset_left = 391.0
-offset_top = 278.0
+offset_top = 488.0
 offset_right = 706.0
-offset_bottom = 428.0
-text = "Quit
-"
+offset_bottom = 638.0
+theme_override_colors/font_color = Color(0.985465, 0.902708, 1, 1)
+theme_override_colors/font_outline_color = Color(0.713726, 0.498039, 0.811765, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_116nx")
+theme_override_font_sizes/font_size = 48
+text = "Quit Game"
+flat = true
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Quit"]
+environment = SubResource("Environment_fsql0")
+
+[node name="Fade_transition" parent="." instance=ExtResource("3_tn51j")]
+visible = false
+
+[node name="Fade_timer" type="Timer" parent="Fade_transition"]
+
+[connection signal="pressed" from="Start" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
