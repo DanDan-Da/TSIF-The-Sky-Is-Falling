@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfx5lvq88fx51"]
+[gd_scene load_steps=8 format=3 uid="uid://cfx5lvq88fx51"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_vkuvb"]
-[ext_resource type="VideoStream" path="res://MainMenu/output_video.ogv" id="2_fhjam"]
 [ext_resource type="FontFile" uid="uid://bcqp6l8lhkukb" path="res://MainMenu/InfoFontEnglish.ttf" id="3_116nx"]
 [ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="3_tn51j"]
 [ext_resource type="Shader" path="res://title_screen.gdshader" id="4_mli4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4oc5a"]
+render_priority = 0
+shader = ExtResource("4_mli4t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1rv6"]
 render_priority = 0
 shader = ExtResource("4_mli4t")
 
@@ -17,27 +20,17 @@ glow_strength = 0.84
 glow_blend_mode = 1
 glow_hdr_scale = 2.44
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1rv6"]
-render_priority = 0
-shader = ExtResource("4_mli4t")
-
-[sub_resource type="Environment" id="Environment_fsql0"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 0.73
-glow_strength = 0.84
-
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_vkuvb")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ParallaxBackground"]
 offset_right = 1152.0
 offset_bottom = 653.0
-stream = ExtResource("2_fhjam")
 autoplay = true
 expand = true
 loop = true
@@ -57,9 +50,6 @@ theme_override_font_sizes/font_size = 48
 text = "Start Game"
 flat = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Start"]
-environment = SubResource("Environment_nncyf")
-
 [node name="Quit" type="Button" parent="."]
 modulate = Color(1, 1, 2, 1)
 material = SubResource("ShaderMaterial_r1rv6")
@@ -76,7 +66,7 @@ text = "Quit Game"
 flat = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Quit"]
-environment = SubResource("Environment_fsql0")
+environment = SubResource("Environment_nncyf")
 
 [node name="Fade_transition" parent="." instance=ExtResource("3_tn51j")]
 visible = false
