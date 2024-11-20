@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=15 format=3 uid="uid://osnabbbsa74n"]
 
+[ext_resource type="Script" path="res://level_1.gd" id="1_3om3o"]
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
 [ext_resource type="Script" path="res://block.gd" id="2_1m424"]
 [ext_resource type="PackedScene" uid="uid://qpwid257x8d5" path="res://Player.tscn" id="2_hgtvx"]
 [ext_resource type="PackedScene" uid="uid://bwe3osgqx8mgs" path="res://Sphere.tscn" id="3_klddj"]
 [ext_resource type="PackedScene" uid="uid://dduoi18ggiwdy" path="res://coin.tscn" id="4_ue4bp"]
 [ext_resource type="PackedScene" uid="uid://dx7ftb0uhf76x" path="res://donut.tscn" id="5_70xok"]
+[ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="8_yd3jk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crl6g"]
 albedo_color = Color(0.41, 0.7345, 1, 1)
@@ -38,6 +40,7 @@ ssr_enabled = true
 ssao_enabled = true
 
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_3om3o")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.886317, 0.46308, 0, -0.46308, 0.886317, 0, 9.42881, 12.3415)
@@ -92,3 +95,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43012, 26.1993, 0.375263)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8mu31")
+
+[node name="Fade_transition" parent="." instance=ExtResource("8_yd3jk")]
