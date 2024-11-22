@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=16 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_3om3o"]
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwe3osgqx8mgs" path="res://Sphere.tscn" id="3_klddj"]
 [ext_resource type="PackedScene" uid="uid://dduoi18ggiwdy" path="res://coin.tscn" id="4_ue4bp"]
 [ext_resource type="PackedScene" uid="uid://dx7ftb0uhf76x" path="res://donut.tscn" id="5_70xok"]
+[ext_resource type="Texture2D" uid="uid://chqbhiiga7yt4" path="res://PNGs/4k blender custom.exr" id="8_ckv31"]
 [ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="8_yd3jk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crl6g"]
@@ -20,24 +21,18 @@ material = SubResource("StandardMaterial3D_crl6g")
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ktwu"]
 size = Vector3(10, 0.5, 10)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n5u3d"]
-sky_top_color = Color(0.966744, 0.8799, 0.662709, 1)
-sky_horizon_color = Color(0.815077, 0.482214, 0, 1)
-sky_curve = 0.0128066
-ground_bottom_color = Color(0.000551488, 1.7955e-07, 0.00589961, 1)
-ground_horizon_color = Color(0.345846, 0.147809, 2.40654e-08, 1)
-ground_curve = 0.0800002
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gv4o1"]
+panorama = ExtResource("8_ckv31")
 
-[sub_resource type="Sky" id="Sky_2c0uy"]
-sky_material = SubResource("ProceduralSkyMaterial_n5u3d")
+[sub_resource type="Sky" id="Sky_uc7ia"]
+sky_material = SubResource("PanoramaSkyMaterial_gv4o1")
 
-[sub_resource type="Environment" id="Environment_8mu31"]
+[sub_resource type="Environment" id="Environment_6fwil"]
 background_mode = 2
-sky = SubResource("Sky_2c0uy")
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.73
-ssr_enabled = true
-ssao_enabled = true
+sky = SubResource("Sky_uc7ia")
+sky_rotation = Vector3(-0.42586, 0, 0)
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_3om3o")
@@ -94,6 +89,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20023, 2.49549)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43012, 26.1993, 0.375263)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8mu31")
+environment = SubResource("Environment_6fwil")
 
 [node name="Fade_transition" parent="." instance=ExtResource("8_yd3jk")]
