@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfx5lvq88fx51"]
+[gd_scene load_steps=9 format=3 uid="uid://cfx5lvq88fx51"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_vkuvb"]
 [ext_resource type="FontFile" uid="uid://bcqp6l8lhkukb" path="res://MainMenu/InfoFontEnglish.ttf" id="3_116nx"]
 [ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="3_tn51j"]
 [ext_resource type="Shader" path="res://title_screen.gdshader" id="4_mli4t"]
+[ext_resource type="Texture2D" uid="uid://csmjd1i55a5hq" path="res://PNGs/ControlScheme.png" id="5_rog2a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4oc5a"]
 render_priority = 0
@@ -72,6 +73,23 @@ environment = SubResource("Environment_nncyf")
 visible = false
 
 [node name="Fade_timer" type="Timer" parent="Fade_transition"]
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 714.0
+offset_top = 10.0
+offset_right = 1141.0
+offset_bottom = 651.0
+
+[node name="TextureRect" type="TextureRect" parent="Controls"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 7.0
+offset_right = 425.0
+offset_bottom = 331.0
+texture = ExtResource("5_rog2a")
+expand_mode = 1
 
 [connection signal="pressed" from="Start" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
