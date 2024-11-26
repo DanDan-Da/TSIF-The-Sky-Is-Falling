@@ -18,11 +18,17 @@ func _physics_process(delta: float) -> void:
 	# Get input direction for movement
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+
 
 	# Update velocity based on input direction
 	if direction != Vector3.ZERO:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		
+		# Make the character face the direction of movement (only around Y-axis)
+		var target_rotation = atan2(direction.x, direction.z)  # Use correct axis for Godot's forward direction
+		rotation.y = lerp_angle(rotation.y, target_rotation, 0.1)  # Smoothly rotate to the target direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 		velocity.z = move_toward(velocity.z, 0, SPEED * delta)

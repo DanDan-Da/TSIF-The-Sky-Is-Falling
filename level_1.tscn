@@ -72,7 +72,7 @@ script = ExtResource("5_okxov")
 transform = Transform3D(0.866025, 0.5, 0, -0.499837, 0.865743, -0.0255314, -0.0127657, 0.0221108, 0.999674, -1.85749, 12.8191, -2.52711)
 
 [node name="Donut" parent="Objects" instance=ExtResource("5_70xok")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43012, 37.0679, 0.375263)
+transform = Transform3D(0.999917, -0.0128913, -0.000577089, 0.0128916, 0.999917, 0.000525862, 0.000570258, -0.000533261, 1, 2.43012, 37.0679, 0.375263)
 
 [node name="Coin" parent="." instance=ExtResource("4_ue4bp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20023, 2.49549)
