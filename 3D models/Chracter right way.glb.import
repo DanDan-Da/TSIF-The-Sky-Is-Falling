@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bog7g7xr470kw"
-path="res://.godot/imported/Character 1.glb-362dbc419ca97f655646d9d74b962a9c.scn"
+uid="uid://drts5rrui85bi"
+path="res://.godot/imported/Chracter right way.glb-05c22be919c6dad07688cabb3b8550ca.scn"
 
 [deps]
 
-source_file="res://3D models/Character 1.glb"
-dest_files=["res://.godot/imported/Character 1.glb-362dbc419ca97f655646d9d74b962a9c.scn"]
+source_file="res://3D models/Chracter right way.glb"
+dest_files=["res://.godot/imported/Chracter right way.glb-05c22be919c6dad07688cabb3b8550ca.scn"]
 
 [params]
 
@@ -33,14 +33,14 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"Character 1_Cylinder": {
+"Chracter right way_Cylinder": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://3D models/Character.res"
+"save_to_file/path": "res://Player.res"
 }
 }
 }

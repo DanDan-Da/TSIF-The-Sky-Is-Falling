@@ -40,9 +40,6 @@ glow_enabled = true
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_3om3o")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.886317, 0.46308, 0, -0.46308, 0.886317, 0, 9.42881, 12.3415)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 0.115856, -5.06422e-09, 0.993266, -0.993266, 4.3417e-08, 0.115856, 0, 54.5831, 0)
 shadow_enabled = true
@@ -57,9 +54,6 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_8ktwu")
-
-[node name="Player" parent="." instance=ExtResource("2_hgtvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10435, 1.04795, -1.85485)
 
 [node name="Objects" type="Node3D" parent="."]
 script = ExtResource("3_7wy1g")
@@ -99,3 +93,9 @@ shape = SubResource("BoxShape3D_fehcx")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="WorldBoarder"]
 transform = Transform3D(-4.80825e-07, 0, 1, 0, 25, 0, -11, 0, -4.37114e-08, -5.5, 12.5, 0)
 shape = SubResource("BoxShape3D_fehcx")
+
+[node name="Player" parent="." instance=ExtResource("2_hgtvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0664287, 1.70232, -0.533498)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9.00438, 9.62556)
