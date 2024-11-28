@@ -77,7 +77,6 @@ visible = false
 [node name="Fade_timer" type="Timer" parent="Fade_transition"]
 
 [node name="Controls" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 714.0
@@ -86,11 +85,12 @@ offset_right = 1141.0
 offset_bottom = 651.0
 
 [node name="TextureRect" type="TextureRect" parent="Controls"]
+modulate = Color(1, 1, 1, 0.862745)
 layout_mode = 0
-offset_left = -17.0
-offset_top = 7.0
-offset_right = 425.0
-offset_bottom = 331.0
+offset_left = 207.0
+offset_top = 507.0
+offset_right = 390.0
+offset_bottom = 640.0
 texture = ExtResource("5_rog2a")
 expand_mode = 1
 
