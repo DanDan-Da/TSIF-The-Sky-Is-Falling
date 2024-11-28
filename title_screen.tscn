@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfx5lvq88fx51"]
+[gd_scene load_steps=10 format=3 uid="uid://cfx5lvq88fx51"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_vkuvb"]
+[ext_resource type="VideoStream" path="res://Start screen.ogv" id="2_ivxa3"]
 [ext_resource type="FontFile" uid="uid://bcqp6l8lhkukb" path="res://MainMenu/InfoFontEnglish.ttf" id="3_116nx"]
 [ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="3_tn51j"]
 [ext_resource type="Shader" path="res://title_screen.gdshader" id="4_mli4t"]
@@ -29,9 +30,10 @@ visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ParallaxBackground"]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_right = 1152.0
 offset_bottom = 653.0
+stream = ExtResource("2_ivxa3")
 autoplay = true
 expand = true
 loop = true
@@ -75,6 +77,7 @@ visible = false
 [node name="Fade_timer" type="Timer" parent="Fade_transition"]
 
 [node name="Controls" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 714.0

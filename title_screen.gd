@@ -16,4 +16,4 @@ func _on_quit_pressed():
 # Called when the fade timer times out.
 func _on_fade_timer_timeout() -> void:
 	if button_type == "start":
-		get_tree().change_scene_to_file("res://level_1.tscn")
+		get_tree().change_scene_to_file("res://info.tscn")
