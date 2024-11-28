@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=19 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_3om3o"]
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://sphere.gd" id="5_okxov"]
 [ext_resource type="Texture2D" uid="uid://chqbhiiga7yt4" path="res://PNGs/4k blender custom.exr" id="8_ckv31"]
 [ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="8_yd3jk"]
+[ext_resource type="PackedScene" uid="uid://bu01nb4hfnr4d" path="res://pause_menu.tscn" id="11_aspse"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crl6g"]
 albedo_color = Color(0.41, 0.7345, 1, 1)
@@ -99,3 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0664287, 1.70232, -0.533498
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9.00438, 9.62556)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_aspse")]
