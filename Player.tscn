@@ -1,16 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://qpwid257x8d5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kgqgy"]
-[ext_resource type="PackedScene" uid="uid://drts5rrui85bi" path="res://3D models/Chracter right way.glb" id="2_y3vp0"]
+[ext_resource type="PackedScene" uid="uid://dyk68rhre2rqk" path="res://3D models/Player.glb" id="2_u27l8"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_3bkfb"]
-height = 2.01398
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bap2c"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_kgqgy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_3bkfb")
+shape = SubResource("CapsuleShape3D_bap2c")
 
-[node name="CharacterMesh" parent="." instance=ExtResource("2_y3vp0")]
-transform = Transform3D(0.531921, 0, 0, 0, 0.584351, 0, 0, 0, 0.531921, 0, -0.991772, 0)
+[node name="PlayerMesh" parent="." instance=ExtResource("2_u27l8")]
+transform = Transform3D(0.49771, 0, 0, 0, 0.516562, 0, 0, 0, 0.49771, 0, -0.879, 0)

@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-	$CharacterMesh.rotation.y = lerp_angle($CharacterMesh.rotation.y, atan2(+last_direction.x, +last_direction.z), delta * rotation_speed) #Rotation for chracter mesh
+	$PlayerMesh.rotation.y = lerp_angle($PlayerMesh.rotation.y, atan2(+last_direction.x, +last_direction.z), delta * rotation_speed) #Rotation for chracter mesh
 	$CollisionShape3D.rotation.y = lerp_angle($CollisionShape3D.rotation.y, atan2(+last_direction.x, +last_direction.z), delta * rotation_speed) #Rotation for chracter hitbox
 	
 	# Move the character and apply the calculated velocity
