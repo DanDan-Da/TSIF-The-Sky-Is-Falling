@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var spawn_interval: float = 0.  # Time between spawns
+@export var spawn_interval: float = 1.0  # Time between spawns
 @export var spawn_range_x: Vector2 = Vector2(-4.5, 4.5)  # X range for spawning
 @export var spawn_range_z: Vector2 = Vector2(-4.5, 4.5)  # Z range for spawning
 @export var spawn_height: float = 20.0  # Y position for spawning
@@ -54,3 +54,16 @@ func spawn_object():
 
 				# Apply the initial downward impulse
 				new_object.apply_impulse(Vector3.ZERO, Vector3(0, -initial_fall_impulse, 0))
+
+				# Add a timer to disable physics after a delay
+				var disable_timer = Timer.new()
+				disable_timer.wait_time = 60  # Time in seconds before disabling physics
+				disable_timer.one_shot = true
+				disable_timer.connect("timeout", Callable(self, "_disable_physics").bind(new_object))
+				new_object.add_child(disable_timer)
+				disable_timer.start()
+
+# Function to disable physics for an object
+func _disable_physics(object: RigidBody3D):
+	if object and is_instance_valid(object):  # Use the global function correctly
+		object.set_deferred("freeze", true)  # Freeze the rigid body in place
