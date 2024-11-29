@@ -96,12 +96,8 @@ shape = SubResource("BoxShape3D_fehcx")
 [node name="Player" parent="." instance=ExtResource("2_hgtvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0664287, 1.70232, -0.533498)
 
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258566, 0.965994, 0, -0.965994, 0.258566, 0, 28.4784, 7.23169)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9.00438, 9.62556)
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
