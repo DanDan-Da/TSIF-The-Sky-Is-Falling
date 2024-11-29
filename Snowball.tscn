@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwe3osgqx8mgs"]
+
+[ext_resource type="ArrayMesh" uid="uid://ceste0gw6bwvx" path="res://3D models/Snowball.res" id="1_s4bot"]
+[ext_resource type="Script" path="res://Snowball.gd" id="1_v06ft"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hq8vj"]
+
+[node name="Snowball" type="RigidBody3D"]
+script = ExtResource("1_v06ft")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.371036, 0, 0, 0, 0.371036, 0, 0, 0, 0.371036, 0, 0, 0)
+mesh = ExtResource("1_s4bot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_hq8vj")
