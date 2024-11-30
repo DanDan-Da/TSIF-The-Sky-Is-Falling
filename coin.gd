@@ -17,7 +17,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 	# Making the coin pop up slightly
 	tween.tween_property(self, "position", position - Vector3(0, -2.5, 0), 0.3)
-
+	$CoinCling.play()
 	# Delay for 1 seconds before starting fade-out effect
 	await get_tree().create_timer(1.0).timeout
 

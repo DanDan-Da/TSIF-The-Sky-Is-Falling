@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1vgtr6waxedg"]
+[gd_scene load_steps=9 format=3 uid="uid://c1vgtr6waxedg"]
 
 [ext_resource type="Script" path="res://block.gd" id="1_c5npe"]
 [ext_resource type="ArrayMesh" uid="uid://bfnoenw0n1l37" path="res://3D models/Cube2.0.res" id="2_aexbl"]
+[ext_resource type="AudioStream" uid="uid://bkn08jnbomavq" path="res://Sounds/Stone1.mp3" id="3_0tvdf"]
+[ext_resource type="AudioStream" uid="uid://6vdn6mnuuos1" path="res://Sounds/Stone2.mp3" id="4_ch03a"]
+[ext_resource type="AudioStream" uid="uid://bkowwjwsxgdxq" path="res://Sounds/Stone3.mp3" id="5_ddh6n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgcpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pj6mc"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q0opm"]
+streams_count = 3
+stream_0/stream = ExtResource("3_0tvdf")
+stream_1/stream = ExtResource("4_ch03a")
+stream_2/stream = ExtResource("5_ddh6n")
 
 [node name="Block" type="RigidBody3D"]
 script = ExtResource("1_c5npe")
@@ -24,4 +33,9 @@ visible = false
 transform = Transform3D(0.865, 0, 0, 0, 0.865, 0, 0, 0, 0.865, 0, -0.121055, 0)
 shape = SubResource("BoxShape3D_pj6mc")
 
+[node name="Stone" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_q0opm")
+pitch_scale = 0.54
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
