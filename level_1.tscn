@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=20 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_3om3o"]
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
@@ -36,6 +36,11 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fehcx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic200"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd5y4"]
+bg_color = Color(0.552792, 0.114867, 0.169834, 1)
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_3om3o")
@@ -98,6 +103,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0664287, 1.70232, -0.533498
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9.00438, 9.62556)
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera3D"]
+offset_right = 509.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ic200")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cd5y4")
+show_percentage = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

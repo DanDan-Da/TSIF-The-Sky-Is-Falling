@@ -7,7 +7,28 @@ const MIN_PUSH_FORCE = 0.5  # Minimum force applied when pushing
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")  # Retrieve default gravity setting
 var last_direction = Vector3.FORWARD
 var rotation_speed = 10 #Speed the character rotates
+var health = 100
+var is_hurt = false
+var is_dead = false
 
+func hurt(hit_points):
+	if !is_hurt:
+		is_hurt = true
+		$HurtTimer.start()
+		print("HurtTimer Started")
+		if hit_points < health:
+			health -= hit_points
+			print("im hit")
+		else: 
+			health = 0
+		$"../Camera3D/ProgressBar".value = health
+		if health == 0:
+			die()
+
+func die():
+	print("im dieded")
+	is_dead = true
+	get_tree().change_scene_to_file("res://title_screen.tscn")
 
 func _physics_process(delta: float) -> void:
 	# Add gravity if the player is not on the floor
@@ -41,3 +62,8 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider() is RigidBody3D:
 			var push_force = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
+
+
+func _on_hurt_timer_timeout() -> void:
+	is_hurt = false
+	print("Hurt timer ended")

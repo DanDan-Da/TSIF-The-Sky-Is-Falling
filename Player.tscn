@@ -13,3 +13,8 @@ shape = SubResource("CapsuleShape3D_bap2c")
 
 [node name="PlayerMesh" parent="." instance=ExtResource("2_u27l8")]
 transform = Transform3D(0.49771, 0, 0, 0, 0.516562, 0, 0, 0, 0.49771, 0, -0.879, 0)
+
+[node name="HurtTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]

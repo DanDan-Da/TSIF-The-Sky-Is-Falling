@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1vgtr6waxedg"]
+[gd_scene load_steps=10 format=3 uid="uid://c1vgtr6waxedg"]
 
 [ext_resource type="Script" path="res://block.gd" id="1_c5npe"]
 [ext_resource type="ArrayMesh" uid="uid://bfnoenw0n1l37" path="res://3D models/Cube2.0.res" id="2_aexbl"]
@@ -7,6 +7,20 @@
 [ext_resource type="AudioStream" uid="uid://bkowwjwsxgdxq" path="res://Sounds/Stone3.mp3" id="5_ddh6n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgcpb"]
+
+[sub_resource type="GDScript" id="GDScript_up8rk"]
+script/source = "extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	global_rotation = Vector3.ZERO
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pj6mc"]
 
@@ -24,13 +38,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = ExtResource("2_aexbl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0037, 0, 0, 0, 1.0037, 0, 0, 0, 1.0037, 0, 0, 0)
 shape = SubResource("BoxShape3D_kgcpb")
 
 [node name="HurtBox" type="Area3D" parent="."]
-visible = false
+script = SubResource("GDScript_up8rk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
-transform = Transform3D(0.865, 0, 0, 0, 0.865, 0, 0, 0, 0.865, 0, -0.121055, 0)
+transform = Transform3D(0.747418, 0, 0, 0, 0.747418, 0, 0, 0, 0.747418, 0, -0.241844, 0)
 shape = SubResource("BoxShape3D_pj6mc")
 
 [node name="Stone" type="AudioStreamPlayer3D" parent="."]
@@ -39,3 +54,4 @@ pitch_scale = 0.54
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="property_list_changed" from="HurtBox" to="." method="_on_hurt_box_property_list_changed"]
