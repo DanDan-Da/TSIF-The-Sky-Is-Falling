@@ -11,6 +11,7 @@ var health = 5
 var is_hurt = false
 var is_dead = false
 
+
 func hurt(hit_points):
 	if !is_hurt:
 		is_hurt = true
@@ -62,6 +63,7 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider() is RigidBody3D:
 			var push_force = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
+
 
 
 func _on_hurt_timer_timeout() -> void:
