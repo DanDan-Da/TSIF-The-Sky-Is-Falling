@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_rotation = Vector3(0,1,0)
+	global_rotation = Vector3.ZERO
 "
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n0nn7"]

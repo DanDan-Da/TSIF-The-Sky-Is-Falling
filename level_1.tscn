@@ -74,6 +74,7 @@ environment = SubResource("Environment_6fwil")
 [node name="Fade_transition" parent="." instance=ExtResource("8_yd3jk")]
 
 [node name="WorldBoarder" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldBoarder"]
 transform = Transform3D(11, 0, 0, 0, 25, 0, 0, 0, 1, 0, 12.5, 5.5)
@@ -92,7 +93,7 @@ transform = Transform3D(-4.80825e-07, 0, 1, 0, 25, 0, -11, 0, -4.37114e-08, -5.5
 shape = SubResource("BoxShape3D_fehcx")
 
 [node name="Player" parent="." instance=ExtResource("2_hgtvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0664287, 1.70232, -0.533498)
+transform = Transform3D(1.0356, 0, 0, 0, 1.0356, 0, 0, 0, 1.0356, 0.0664287, 1.70232, -0.533498)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9.00438, 9.62556)

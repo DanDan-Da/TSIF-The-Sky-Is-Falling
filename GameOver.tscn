@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwl2iq7leyw7r"]
+
+[ext_resource type="VideoStream" path="res://Start screen.ogv" id="1_8ag6k"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="."]
+modulate = Color(0.854902, 0.313726, 0.313726, 1)
+self_modulate = Color(1, 0.698039, 1, 1)
+offset_right = 1152.0
+offset_bottom = 653.0
+stream = ExtResource("1_8ag6k")
+autoplay = true
+expand = true
+loop = true
