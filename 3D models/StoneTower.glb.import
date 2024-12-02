@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://fmsxkhl2ctml"
+uid="uid://djx2xg6bpnvbd"
 path="res://.godot/imported/StoneTower.glb-939763d4fe62204549386f63f16143aa.scn"
 
 [deps]
@@ -40,7 +40,7 @@ _subresources={
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://StoneTower.res"
+"save_to_file/path": "res://3D models/StoneTower.res"
 }
 }
 }

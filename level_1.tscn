@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=20 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_3om3o"]
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
-[ext_resource type="ArrayMesh" uid="uid://egwqu866ll52" path="res://3D models/StoneTower.res" id="2_gi2ax"]
+[ext_resource type="ArrayMesh" uid="uid://ts8irc4rjgh" path="res://3D models/StoneTower.res" id="2_gi2ax"]
 [ext_resource type="PackedScene" uid="uid://qpwid257x8d5" path="res://Player.tscn" id="2_hgtvx"]
 [ext_resource type="Script" path="res://objects.gd" id="3_7wy1g"]
 [ext_resource type="PackedScene" uid="uid://bwe3osgqx8mgs" path="res://Snowball.tscn" id="3_klddj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://chqbhiiga7yt4" path="res://PNGs/4k blender custom.exr" id="8_ckv31"]
 [ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="8_yd3jk"]
 [ext_resource type="PackedScene" uid="uid://bu01nb4hfnr4d" path="res://pause_menu.tscn" id="11_aspse"]
+[ext_resource type="AudioStream" uid="uid://bxs77q7tsdqr0" path="res://Sounds/Tsif marimba.mp3" id="12_gae7c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ktwu"]
 size = Vector3(10, 0.5, 10)
@@ -107,3 +108,9 @@ show_percentage = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_aspse")]
+
+[node name="Song" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_gae7c")
+volume_db = -12.973
+pitch_scale = 0.9
+autoplay = true

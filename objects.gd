@@ -1,18 +1,23 @@
 extends Node3D
 
-@export var spawn_interval: float = 0.75  # Time between spawns
+@export var spawn_interval: float = 1.0  #Initial time between spawns
+@export var min_spawn_interval: float = 0.1 #Minimum allowed spawn interval
+@export var interval_decrease: float = 0.1 #Amout to reduce intervaal every 30seconds 
 @export var spawn_range_x: Vector2 = Vector2(-4.5, 4.5)  # X range for spawning
 @export var spawn_range_z: Vector2 = Vector2(-4.5, 4.5)  # Z range for spawning
 @export var spawn_height: float = 20.0  # Y position for spawning
 @export var initial_fall_impulse: float = 10.0  # Initial downward force
 
 var spawn_timer: Timer  # Timer for spawning new objects
+var interval_timer: Timer #Timer to adjust spawn intervals
 var spawnable_objects: Array = []  # Array to hold the original spawnable objects
 
 func _ready():
 	randomize()  # Ensure randomness
 	initialize_spawnable_objects()
 	setup_spawn_timer()
+	setup_interval_timer()
+	
 
 # Initialize the spawnable objects array with the original children
 func initialize_spawnable_objects():
@@ -28,6 +33,16 @@ func setup_spawn_timer():
 	spawn_timer.connect("timeout", Callable(self, "spawn_object"))
 	add_child(spawn_timer)
 	spawn_timer.start()
+
+# Set up the interval timer to decrease spawn interval every 10secs
+func setup_interval_timer():
+	interval_timer = Timer.new()
+	interval_timer.wait_time = 10  # Adjust every 10secs
+	interval_timer.autostart = true
+	interval_timer.one_shot = false
+	interval_timer.connect("timeout", Callable(self, "adjust_spawn_interval"))
+	add_child(interval_timer)
+	interval_timer.start()
 
 # Function to spawn a random object at a random position
 func spawn_object():
@@ -67,3 +82,11 @@ func spawn_object():
 func _disable_physics(object: RigidBody3D):
 	if object and is_instance_valid(object):  # Use the global function correctly
 		object.set_deferred("freeze", true)  # Freeze the rigid body in place
+		
+# Adjust the spawn interval every 30 seconds
+func adjust_spawn_interval():
+	if spawn_interval > min_spawn_interval:
+		spawn_interval -= interval_decrease
+		spawn_interval = max(spawn_interval, min_spawn_interval)  # Clamp to the minimum
+		spawn_timer.wait_time = spawn_interval  # Update the spawn timer
+		print("Spawn interval decreased to:", spawn_interval)
