@@ -1,7 +1,7 @@
 extends Node3D
 
-@export var spawn_interval: float = 1.0  #Initial time between spawns
-@export var min_spawn_interval: float = 0.1 #Minimum allowed spawn interval
+@export var spawn_interval: float = 0.8  #Initial time between spawns
+@export var min_spawn_interval: float = 0.05 #Minimum allowed spawn interval
 @export var interval_decrease: float = 0.1 #Amout to reduce intervaal every 30seconds 
 @export var spawn_range_x: Vector2 = Vector2(-4.5, 4.5)  # X range for spawning
 @export var spawn_range_z: Vector2 = Vector2(-4.5, 4.5)  # Z range for spawning
@@ -72,7 +72,7 @@ func spawn_object():
 
 				# Add a timer to disable physics after a delay
 				var disable_timer = Timer.new()
-				disable_timer.wait_time = 60  # Time in seconds before disabling physics
+				disable_timer.wait_time = 30  # Time in seconds before disabling physics
 				disable_timer.one_shot = true
 				disable_timer.connect("timeout", Callable(self, "_disable_physics").bind(new_object))
 				new_object.add_child(disable_timer)
