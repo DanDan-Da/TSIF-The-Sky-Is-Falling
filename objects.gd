@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var spawn_interval: float = 1.0  # Time between spawns
+@export var spawn_interval: float = 0.75  # Time between spawns
 @export var spawn_range_x: Vector2 = Vector2(-4.5, 4.5)  # X range for spawning
 @export var spawn_range_z: Vector2 = Vector2(-4.5, 4.5)  # Z range for spawning
 @export var spawn_height: float = 20.0  # Y position for spawning

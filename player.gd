@@ -7,7 +7,7 @@ const MIN_PUSH_FORCE = 0.5  # Minimum force applied when pushing
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")  # Retrieve default gravity setting
 var last_direction = Vector3.FORWARD
 var rotation_speed = 10 #Speed the character rotates
-var health = 100
+var health = 5
 var is_hurt = false
 var is_dead = false
 
