@@ -1,9 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://qpwid257x8d5"]
+[gd_scene load_steps=9 format=3 uid="uid://qpwid257x8d5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kgqgy"]
 [ext_resource type="PackedScene" uid="uid://dyk68rhre2rqk" path="res://3D models/Player.glb" id="2_u27l8"]
+[ext_resource type="AudioStream" uid="uid://bwcvg8f8quigd" path="res://Sounds/Hurt1.mp3" id="3_sggil"]
+[ext_resource type="AudioStream" uid="uid://cxi2cpribak3y" path="res://Sounds/Hurt2.mp3" id="4_r5wc4"]
+[ext_resource type="AudioStream" uid="uid://wuw42rvdbynx" path="res://Sounds/Hurt3.mp3" id="5_4noki"]
+[ext_resource type="AudioStream" uid="uid://bma2se2o1axoi" path="res://Sounds/DeathSound.mp3" id="6_uwxbl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bap2c"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_spsw4"]
+streams_count = 3
+stream_0/stream = ExtResource("3_sggil")
+stream_1/stream = ExtResource("4_r5wc4")
+stream_2/stream = ExtResource("5_4noki")
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_kgqgy")
@@ -17,4 +27,14 @@ transform = Transform3D(0.49771, 0, 0, 0, 0.516562, 0, 0, 0, 0.49771, 0, -0.879,
 [node name="HurtTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_spsw4")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_uwxbl")
+
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

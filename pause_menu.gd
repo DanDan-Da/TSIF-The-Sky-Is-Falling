@@ -3,12 +3,14 @@ extends Control
 func _ready():
 	$AnimationPlayer.play("RESET")
 
+
 func resume():
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 
 func pause():
 	get_tree().paused = true
+	$Click.play()
 	$AnimationPlayer.play("blur")
 
 func testEsc():
@@ -16,16 +18,31 @@ func testEsc():
 		pause()
 	elif Input.is_action_just_pressed("esc") and get_tree().paused:
 		resume()
+		$Click.play()
 
 func _on_resume_pressed():
+	$Click.play()
 	resume()
 
 func _on_restart_pressed():
 	resume()
-	get_tree().reload_current_scene()
+	$Restart.start()
+	$Click.play()
+
+
 
 func _on_quit_pressed():
-	get_tree().quit()
+	$Quit.start()
+	$Click.play()
+
 
 func _process(delta):
 	testEsc()
+
+
+func _on_restart_timeout() -> void:
+	get_tree().reload_current_scene()
+
+
+func _on_quit_timeout() -> void:
+	get_tree().quit()

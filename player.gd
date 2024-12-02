@@ -19,6 +19,7 @@ func hurt(hit_points):
 		print("HurtTimer Started")
 		if hit_points < health:
 			health -= hit_points
+			$HurtSound.play()
 			print("im hit")
 		else: 
 			health = 0
@@ -28,8 +29,10 @@ func hurt(hit_points):
 
 func die():
 	print("im dieded")
+	$DeathTimer.start()
+	$DeathSound.play()
 	is_dead = true
-	get_tree().change_scene_to_file("res://title_screen.tscn")
+
 
 func _physics_process(delta: float) -> void:
 	# Add gravity if the player is not on the floor
@@ -69,3 +72,7 @@ func _physics_process(delta: float) -> void:
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false
 	print("Hurt timer ended")
+
+
+func _on_death_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://title_screen.tscn")
