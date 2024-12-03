@@ -10,5 +10,5 @@ func _ready():
 
 func _on_hurt_box_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print("Cloud entered by Player")
+		print("Cloud!")
 		get_tree().call_group("Player","hurt", 1)

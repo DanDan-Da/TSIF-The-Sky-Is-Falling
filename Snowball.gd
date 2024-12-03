@@ -7,5 +7,5 @@ func _ready():
 
 func _on_hurt_box_body_entered(body):
 	if body.is_in_group("Player"):
-		print("Snowball entered by Player")
+		print("Snowball!")
 		get_tree().call_group("Player","hurt", 1)
