@@ -159,7 +159,7 @@ autostart = true
 
 [node name="Song" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("12_gae7c")
-volume_db = -12.973
+volume_db = -9.398
 pitch_scale = 0.9
 autoplay = true
 

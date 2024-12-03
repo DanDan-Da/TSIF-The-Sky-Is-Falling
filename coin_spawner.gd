@@ -4,7 +4,7 @@ extends Node3D
 @export var spawn_range_z: Vector2 = Vector2(-4.5, 4.5)  # Z range for spawning
 @export var spawn_height: float = 20.0  # Y position for spawning
 @export var initial_fall_impulse: float = 5.0  # Initial downward force
-@export var spawn_interval: float = 10  # Time interval between spawns
+@export var spawn_interval: float = 8  # Time interval between spawns
 @export var coin_scene: PackedScene = preload("res://coin_rigid.tscn")  # Preloaded scene for the coin
 
 func _ready():

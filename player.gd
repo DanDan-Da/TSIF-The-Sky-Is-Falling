@@ -75,4 +75,4 @@ func _on_hurt_timer_timeout() -> void:
 
 
 func _on_death_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://title_screen.tscn")
+	get_tree().change_scene_to_file("res://GameOver.tscn")
