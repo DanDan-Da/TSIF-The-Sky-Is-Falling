@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfx5lvq88fx51"]
+[gd_scene load_steps=15 format=3 uid="uid://cfx5lvq88fx51"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_vkuvb"]
 [ext_resource type="VideoStream" path="res://Start screen.ogv" id="2_ivxa3"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://u1fpyr7vkl1d" path="res://Sounds/Click2.mp3" id="7_oalsb"]
 [ext_resource type="AudioStream" uid="uid://ymqjcwb0v6q0" path="res://Sounds/Click3.mp3" id="8_scjj0"]
 [ext_resource type="AudioStream" uid="uid://c1wct7qxgmhsf" path="res://Sounds/Click.mp3" id="9_xaycs"]
+[ext_resource type="AudioStream" uid="uid://bhvkx2djrjhh8" path="res://Sounds/Audio.mp3" id="10_lg74j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4oc5a"]
 render_priority = 0
@@ -112,6 +113,10 @@ pitch_scale = 0.86
 
 [node name="QuitTimer" type="Timer" parent="."]
 wait_time = 0.198
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_lg74j")
+autoplay = true
 
 [connection signal="pressed" from="Start" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

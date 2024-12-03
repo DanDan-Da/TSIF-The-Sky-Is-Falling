@@ -6,7 +6,7 @@ extends Node3D
 @export var spawn_range_x: Vector2 = Vector2(-4.5, 4.5)  # X range for spawning
 @export var spawn_range_z: Vector2 = Vector2(-4.5, 4.5)  # Z range for spawning
 @export var spawn_height: float = 20.0  # Y position for spawning
-@export var initial_fall_impulse: float = 10.0  # Initial downward force
+@export var initial_fall_impulse: float = 10.  # Initial downward force
 
 var spawn_timer: Timer  # Timer for spawning new objects
 var interval_timer: Timer #Timer to adjust spawn intervals

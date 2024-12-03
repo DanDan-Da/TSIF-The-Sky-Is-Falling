@@ -46,21 +46,25 @@ default_font_size = 28
 [sub_resource type="GDScript" id="GDScript_waqsy"]
 resource_name = "ScoreScript"
 script/source = "extends Label
+
 var score = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	update_score()
 
+# Increment the score and update the label
+func add_score(amount: int) -> void:
+	score += amount
+	update_score()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# Update the label text to reflect the current score
+func update_score() -> void:
+	text = \"Score: %d\" % score
 
 
 func _on_score_timer_timeout() -> void:
 	score += 1
-	text = \"Score: %s\" % score
+	update_score()
 "
 
 [node name="Level1" type="Node3D"]

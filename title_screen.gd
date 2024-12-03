@@ -2,6 +2,7 @@ extends Node2D
 
 var button_type = null
 
+
 # Called when the play button is pressed.
 func _on_play_pressed():
 	button_type = "start"
