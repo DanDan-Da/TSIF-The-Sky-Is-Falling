@@ -3,7 +3,6 @@ var ROT_SPEED = 4
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta: float):
 	rotate_y(deg_to_rad(ROT_SPEED))
-
 func _on_collect_box_body_entered(body: Node3D) -> void:
 	if not body.is_in_group("Player"):
 		return

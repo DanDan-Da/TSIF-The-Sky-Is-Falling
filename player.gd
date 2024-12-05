@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 5.25
 const PUSH_FORCE = 1.0  # Adjust to control the strength of the push
 const MIN_PUSH_FORCE = 0.5  # Minimum force applied when pushing
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")  # Retrieve default gravity setting

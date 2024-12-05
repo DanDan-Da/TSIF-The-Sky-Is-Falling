@@ -34,9 +34,10 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_fehcx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic200"]
+bg_color = Color(0.558644, 0.0751363, 0.190733, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd5y4"]
-bg_color = Color(0.552792, 0.114867, 0.169834, 1)
+bg_color = Color(0.901191, 0.275495, 0.333912, 1)
 
 [sub_resource type="Theme" id="Theme_os421"]
 default_base_scale = 0.08
