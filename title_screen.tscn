@@ -109,7 +109,7 @@ wait_time = 0.198
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_lg74j")
-volume_db = 4.648
+volume_db = 10.27
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
