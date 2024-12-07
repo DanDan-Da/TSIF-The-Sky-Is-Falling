@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qpwid257x8d5"]
+[gd_scene load_steps=12 format=3 uid="uid://qpwid257x8d5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kgqgy"]
 [ext_resource type="PackedScene" uid="uid://dyk68rhre2rqk" path="res://3D models/Player.glb" id="2_u27l8"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://cxi2cpribak3y" path="res://Sounds/Hurt2.mp3" id="4_r5wc4"]
 [ext_resource type="AudioStream" uid="uid://wuw42rvdbynx" path="res://Sounds/Hurt3.mp3" id="5_4noki"]
 [ext_resource type="AudioStream" uid="uid://bma2se2o1axoi" path="res://Sounds/DeathSound.mp3" id="6_uwxbl"]
+[ext_resource type="AudioStream" uid="uid://1h384puqsyox" path="res://Sounds/Jump1.mp3" id="7_31fbe"]
+[ext_resource type="AudioStream" uid="uid://8xhrs15arnxu" path="res://Sounds/Jump2.mp3" id="8_gvm88"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bap2c"]
 
@@ -14,6 +16,11 @@ streams_count = 3
 stream_0/stream = ExtResource("3_sggil")
 stream_1/stream = ExtResource("4_r5wc4")
 stream_2/stream = ExtResource("5_4noki")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cl0n7"]
+streams_count = 2
+stream_0/stream = ExtResource("7_31fbe")
+stream_1/stream = ExtResource("8_gvm88")
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_kgqgy")
@@ -38,6 +45,10 @@ wait_time = 0.75
 [node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_uwxbl")
 volume_db = -2.883
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cl0n7")
+volume_db = -7.0
 
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

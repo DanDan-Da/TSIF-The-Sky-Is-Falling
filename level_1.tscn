@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=25 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_3om3o"]
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dj3nen1ghgff4" path="res://fade_transition.tscn" id="8_yd3jk"]
 [ext_resource type="PackedScene" uid="uid://bu01nb4hfnr4d" path="res://pause_menu.tscn" id="11_aspse"]
 [ext_resource type="FontFile" uid="uid://bcqp6l8lhkukb" path="res://MainMenu/InfoFontEnglish.ttf" id="11_ysr0g"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="12_7ehml"]
 [ext_resource type="AudioStream" uid="uid://bxs77q7tsdqr0" path="res://Sounds/Tsif marimba.mp3" id="12_gae7c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ktwu"]
@@ -97,6 +98,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.94349, -7.42852)
 [node name="SnowBall" parent="Objects" instance=ExtResource("3_klddj")]
 transform = Transform3D(0.997692, 0, 0, 0, 0.997692, 0, 0, 0, 0.997692, 0, -3.98393, -7.01915)
 
+[node name="FreezeTimer" type="Timer" parent="Objects"]
+wait_time = 5.0
+autostart = true
+
 [node name="CoinSpawner" type="Node3D" parent="."]
 script = ExtResource("7_s1oo2")
 
@@ -131,7 +136,8 @@ shape = SubResource("BoxShape3D_fehcx")
 transform = Transform3D(1.0356, 0, 0, 0, 1.0356, 0, 0, 0, 1.0356, 0.0664287, 1.70232, -0.533498)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9.00438, 9.62556)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.4619, 9.62556)
+script = ExtResource("12_7ehml")
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera3D"]
 offset_right = 509.0
@@ -154,6 +160,11 @@ script = SubResource("GDScript_waqsy")
 wait_time = 0.1
 autostart = true
 
+[node name="MoveTimer" type="Timer" parent="Camera3D"]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_aspse")]
@@ -164,4 +175,6 @@ volume_db = -9.398
 pitch_scale = 0.9
 autoplay = true
 
+[connection signal="timeout" from="Objects/FreezeTimer" to="Objects" method="_on_freeze_timer_timeout"]
 [connection signal="timeout" from="Camera3D/ScoreLabel/ScoreTimer" to="Camera3D/ScoreLabel" method="_on_score_timer_timeout"]
+[connection signal="timeout" from="Camera3D/MoveTimer" to="Camera3D" method="_on_move_timer_timeout"]

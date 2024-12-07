@@ -42,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump input
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$Jump.play()
 
 	# Get input direction for movement
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

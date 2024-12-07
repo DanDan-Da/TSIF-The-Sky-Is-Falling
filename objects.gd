@@ -11,13 +11,15 @@ extends Node3D
 var spawn_timer: Timer  # Timer for spawning new objects
 var interval_timer: Timer #Timer to adjust spawn intervals
 var spawnable_objects: Array = []  # Array to hold the original spawnable objects
+var initial_disable = 40 #time at first to disable physics 
+
 
 func _ready():
 	randomize()  # Ensure randomness
 	initialize_spawnable_objects()
 	setup_spawn_timer()
 	setup_interval_timer()
-	
+
 
 # Initialize the spawnable objects array with the original children
 func initialize_spawnable_objects():
@@ -72,11 +74,19 @@ func spawn_object():
 
 				# Add a timer to disable physics after a delay
 				var disable_timer = Timer.new()
-				disable_timer.wait_time = 30  # Time in seconds before disabling physics
+				disable_timer.wait_time = initial_disable  # Time in seconds before disabling physics
 				disable_timer.one_shot = true
 				disable_timer.connect("timeout", Callable(self, "_disable_physics").bind(new_object))
 				new_object.add_child(disable_timer)
 				disable_timer.start()
+#Making the objects freeze quicker the longer time goes
+
+func _on_freeze_timer_timeout() -> void:
+	if initial_disable > 10:
+		initial_disable -= 5
+		print("disabling physics 5 seconds faster")
+		print(initial_disable)
+
 
 # Function to disable physics for an object
 func _disable_physics(object: RigidBody3D):
