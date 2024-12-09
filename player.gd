@@ -10,6 +10,7 @@ var rotation_speed = 10 #Speed the character rotates
 var health = 5
 var is_hurt = false
 var is_dead = false
+var canstep = true #to play step sound
 
 
 func hurt(hit_points):
@@ -51,6 +52,10 @@ func _physics_process(delta: float) -> void:
 		last_direction = direction #Checks direction to use for rotation
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if canstep:
+			$Step.play()
+			$StepTimer.start()
+			canstep = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -68,12 +73,12 @@ func _physics_process(delta: float) -> void:
 			var push_force = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 
-
-
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false
 	print("Hurt timer ended")
-
-
+	
 func _on_death_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://GameOver.tscn")
+	
+func _on_step_timer_timeout() -> void:
+	canstep = true
