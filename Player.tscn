@@ -47,6 +47,7 @@ one_shot = true
 stream = SubResource("AudioStreamRandomizer_spsw4")
 volume_db = -2.882
 max_db = 3.27
+bus = &"SFX"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.75
@@ -54,15 +55,18 @@ wait_time = 0.75
 [node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_uwxbl")
 volume_db = -2.883
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_cl0n7")
 volume_db = -7.0
+bus = &"SFX"
 
 [node name="Step" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_q352v")
 volume_db = -12.886
 pitch_scale = 1.19
+bus = &"SFX"
 
 [node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.503

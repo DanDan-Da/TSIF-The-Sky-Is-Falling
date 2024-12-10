@@ -60,6 +60,21 @@ theme_override_font_sizes/font_size = 48
 text = "Start Game"
 flat = true
 
+[node name="Options" type="Button" parent="."]
+modulate = Color(1, 1, 2, 1)
+material = SubResource("ShaderMaterial_4oc5a")
+offset_left = 792.0
+offset_top = 424.0
+offset_right = 1107.0
+offset_bottom = 574.0
+theme_override_colors/font_color = Color(0.983007, 0.993056, 1, 1)
+theme_override_colors/font_outline_color = Color(0.349, 0.267, 1, 0.833)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_116nx")
+theme_override_font_sizes/font_size = 48
+text = "Options"
+flat = true
+
 [node name="Quit" type="Button" parent="."]
 modulate = Color(1, 1, 2, 1)
 material = SubResource("ShaderMaterial_4oc5a")
@@ -83,10 +98,10 @@ visible = false
 [node name="Controls" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 714.0
-offset_top = 10.0
-offset_right = 1141.0
-offset_bottom = 651.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 432.0
+offset_bottom = 644.0
 
 [node name="TextureRect" type="TextureRect" parent="Controls"]
 modulate = Color(1, 1, 1, 0.862745)
@@ -103,6 +118,7 @@ position = Vector2(542, 427)
 stream = SubResource("AudioStreamRandomizer_p1rrv")
 volume_db = -2.405
 pitch_scale = 0.86
+bus = &"SFX"
 
 [node name="QuitTimer" type="Timer" parent="."]
 wait_time = 0.198
@@ -111,11 +127,13 @@ wait_time = 0.198
 stream = ExtResource("10_lg74j")
 volume_db = 10.27
 autoplay = true
+bus = &"Music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nncyf")
 
 [connection signal="pressed" from="Start" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
 [connection signal="timeout" from="QuitTimer" to="." method="_on_quit_timer_timeout"]

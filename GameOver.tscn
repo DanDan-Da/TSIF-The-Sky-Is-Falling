@@ -109,6 +109,7 @@ position = Vector2(542, 427)
 stream = SubResource("AudioStreamRandomizer_hvpem")
 volume_db = -2.405
 pitch_scale = 1.08
+bus = &"SFX"
 
 [node name="Fade_transition" parent="." instance=ExtResource("8_72ray")]
 visible = false
