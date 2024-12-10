@@ -24,7 +24,7 @@ script = ExtResource("1_o7rvh")
 transform = Transform3D(-9.01764e-09, 1.6242, -8.6731e-09, 0, -7.09962e-08, -0.198417, -0.2063, -7.09962e-08, 3.79113e-16, 0, -0.527398, -0.38798)
 mesh = ExtResource("2_pmg03")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-7.33006e-08, 1.67692, 0, -1.67692, -7.33006e-08, 0, 0, 0, 1.67692, 0, 0, 0)
 shape = SubResource("CylinderShape3D_34rhh")
 
