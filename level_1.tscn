@@ -136,7 +136,7 @@ shape = SubResource("BoxShape3D_fehcx")
 transform = Transform3D(1.0356, 0, 0, 0, 1.0356, 0, 0, 0, 1.0356, 0.0664287, 1.70232, -0.533498)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.4619, 9.62556)
+transform = Transform3D(1, 0, 0, 0, 0.882152, 0.470966, 0, -0.470966, 0.882152, 0, 7.4619, 9.62556)
 script = ExtResource("12_7ehml")
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera3D"]

@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://u1fpyr7vkl1d" path="res://Sounds/Click2.mp3" id="7_oalsb"]
 [ext_resource type="AudioStream" uid="uid://ymqjcwb0v6q0" path="res://Sounds/Click3.mp3" id="8_scjj0"]
 [ext_resource type="AudioStream" uid="uid://c1wct7qxgmhsf" path="res://Sounds/Click.mp3" id="9_xaycs"]
-[ext_resource type="AudioStream" uid="uid://bhvkx2djrjhh8" path="res://Sounds/Audio.mp3" id="10_lg74j"]
+[ext_resource type="PackedScene" uid="uid://bee1mhs3a22ky" path="res://menu_music.tscn" id="10_5pspd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4oc5a"]
 render_priority = 0
@@ -48,10 +48,10 @@ loop = true
 [node name="Start" type="Button" parent="."]
 modulate = Color(1, 1, 2, 1)
 material = SubResource("ShaderMaterial_4oc5a")
-offset_left = 394.0
-offset_top = 349.0
-offset_right = 709.0
-offset_bottom = 499.0
+offset_left = 395.0
+offset_top = 274.0
+offset_right = 710.0
+offset_bottom = 424.0
 theme_override_colors/font_color = Color(0.983007, 0.993056, 1, 1)
 theme_override_colors/font_outline_color = Color(0.349, 0.267, 1, 0.833)
 theme_override_constants/outline_size = 3
@@ -63,10 +63,10 @@ flat = true
 [node name="Options" type="Button" parent="."]
 modulate = Color(1, 1, 2, 1)
 material = SubResource("ShaderMaterial_4oc5a")
-offset_left = 792.0
-offset_top = 424.0
-offset_right = 1107.0
-offset_bottom = 574.0
+offset_left = 391.0
+offset_top = 376.0
+offset_right = 706.0
+offset_bottom = 526.0
 theme_override_colors/font_color = Color(0.983007, 0.993056, 1, 1)
 theme_override_colors/font_outline_color = Color(0.349, 0.267, 1, 0.833)
 theme_override_constants/outline_size = 3
@@ -104,12 +104,12 @@ offset_right = 432.0
 offset_bottom = 644.0
 
 [node name="TextureRect" type="TextureRect" parent="Controls"]
-modulate = Color(1, 1, 1, 0.862745)
+modulate = Color(0.647059, 0.643137, 0.968627, 0.862745)
 layout_mode = 0
-offset_left = 207.0
-offset_top = 507.0
-offset_right = 390.0
-offset_bottom = 640.0
+offset_left = -5.0
+offset_top = 470.0
+offset_right = 275.0
+offset_bottom = 644.0
 texture = ExtResource("5_rog2a")
 expand_mode = 1
 
@@ -123,11 +123,7 @@ bus = &"SFX"
 [node name="QuitTimer" type="Timer" parent="."]
 wait_time = 0.198
 
-[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_lg74j")
-volume_db = 10.27
-autoplay = true
-bus = &"Music"
+[node name="MenuMusic" parent="." instance=ExtResource("10_5pspd")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nncyf")
