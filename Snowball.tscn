@@ -39,3 +39,4 @@ transform = Transform3D(0.831037, 0, 0, 0, 0.831037, 0, 0, 0, 0.831037, 0, -0.15
 shape = SubResource("SphereShape3D_n0nn7")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="HurtBox" to="." method="_on_hurt_box_body_exited"]

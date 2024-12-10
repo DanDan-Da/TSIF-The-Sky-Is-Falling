@@ -71,6 +71,9 @@ bus = &"SFX"
 [node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.503
 
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="finished" from="Step" to="." method="_on_step_finished"]

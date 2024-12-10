@@ -102,6 +102,10 @@ transform = Transform3D(0.997692, 0, 0, 0, 0.997692, 0, 0, 0, 0.997692, 0, -3.98
 wait_time = 5.0
 autostart = true
 
+[node name="HeightTimer" type="Timer" parent="Objects"]
+wait_time = 30.0
+autostart = true
+
 [node name="CoinSpawner" type="Node3D" parent="."]
 script = ExtResource("7_s1oo2")
 
@@ -114,6 +118,7 @@ environment = SubResource("Environment_6fwil")
 [node name="Fade_transition" parent="." instance=ExtResource("8_yd3jk")]
 
 [node name="WorldBoarder" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3.1968, 0, 0, 0, 1, 0, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldBoarder"]
@@ -157,7 +162,7 @@ text = "Score: 0"
 script = SubResource("GDScript_waqsy")
 
 [node name="ScoreTimer" type="Timer" parent="Camera3D/ScoreLabel"]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true
 
 [node name="MoveTimer" type="Timer" parent="Camera3D"]
@@ -177,5 +182,6 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="timeout" from="Objects/FreezeTimer" to="Objects" method="_on_freeze_timer_timeout"]
+[connection signal="timeout" from="Objects/HeightTimer" to="Objects" method="_on_height_timer_timeout"]
 [connection signal="timeout" from="Camera3D/ScoreLabel/ScoreTimer" to="Camera3D/ScoreLabel" method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Camera3D/MoveTimer" to="Camera3D" method="_on_move_timer_timeout"]

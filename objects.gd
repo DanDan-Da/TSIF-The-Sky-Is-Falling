@@ -19,6 +19,7 @@ func _ready():
 	initialize_spawnable_objects()
 	setup_spawn_timer()
 	setup_interval_timer()
+	
 
 
 # Initialize the spawnable objects array with the original children
@@ -100,3 +101,7 @@ func adjust_spawn_interval():
 		spawn_interval = max(spawn_interval, min_spawn_interval)  # Clamp to the minimum
 		spawn_timer.wait_time = spawn_interval  # Update the spawn timer
 		print("Spawn interval decreased to:", spawn_interval)
+
+
+func _on_height_timer_timeout() -> void:
+	spawn_height += 5
