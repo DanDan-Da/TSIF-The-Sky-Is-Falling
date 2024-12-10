@@ -16,7 +16,9 @@ func _on_quit_pressed():
 	$Click.play()
 	$QuitTimer.start()
 
-
+func _on_options_pressed():
+	$Click.play()
+	get_tree().change_scene_to_file("res://options.tscn")
 
 # Called when the fade timer times out.
 func _on_fade_timer_timeout() -> void:

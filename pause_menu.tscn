@@ -194,6 +194,12 @@ theme_override_fonts/font = ExtResource("2_2cvaj")
 theme_override_font_sizes/font_size = 52
 text = "Restart"
 
+[node name="TitleScreen" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2cvaj")
+theme_override_font_sizes/font_size = 52
+text = "Back to Title"
+
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2cvaj")
@@ -210,6 +216,7 @@ position = Vector2(542, 427)
 stream = SubResource("AudioStreamRandomizer_lj3xd")
 volume_db = -2.405
 pitch_scale = 1.08
+bus = &"SFX"
 
 [node name="Restart" type="Timer" parent="."]
 wait_time = 0.2
@@ -219,6 +226,7 @@ wait_time = 0.2
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TitleScreen" to="." method="_on_title_screen_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Restart" to="." method="_on_restart_timeout"]
 [connection signal="timeout" from="Quit" to="." method="_on_quit_timeout"]
