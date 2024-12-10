@@ -49,4 +49,5 @@ func _on_quit_timeout() -> void:
 
 
 func _on_title_screen_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://title_screen.tscn")

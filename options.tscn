@@ -39,6 +39,7 @@ grow_vertical = 2
 script = ExtResource("1_rylvu")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 653.0
 stream = ExtResource("2_0jhy6")
@@ -98,6 +99,7 @@ bus = &"Music"
 [node name="TitleScreen" type="Button" parent="."]
 modulate = Color(1, 1, 2, 1)
 material = SubResource("ShaderMaterial_o0ib1")
+layout_mode = 0
 offset_left = 394.0
 offset_top = 559.0
 offset_right = 709.0
