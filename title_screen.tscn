@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfx5lvq88fx51"]
+[gd_scene load_steps=15 format=3 uid="uid://cfx5lvq88fx51"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_vkuvb"]
 [ext_resource type="VideoStream" path="res://Start screen.ogv" id="2_ivxa3"]
@@ -28,6 +28,14 @@ glow_enabled = true
 glow_strength = 0.84
 glow_blend_mode = 1
 glow_hdr_scale = 2.44
+
+[sub_resource type="GDScript" id="GDScript_1ot0h"]
+script/source = "extends Label
+
+func _ready() -> void:
+	# Display the high score from the Global singleton
+	text = \"High Score: %d\" % Global.high_score
+"
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_vkuvb")
@@ -106,9 +114,9 @@ offset_bottom = 644.0
 [node name="TextureRect" type="TextureRect" parent="Controls"]
 modulate = Color(0.647059, 0.643137, 0.968627, 0.862745)
 layout_mode = 0
-offset_left = -5.0
+offset_left = 94.0
 offset_top = 470.0
-offset_right = 275.0
+offset_right = 374.0
 offset_bottom = 644.0
 texture = ExtResource("5_rog2a")
 expand_mode = 1
@@ -127,6 +135,12 @@ wait_time = 0.198
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nncyf")
+
+[node name="HighScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Highscore"
+script = SubResource("GDScript_1ot0h")
 
 [connection signal="pressed" from="Start" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]

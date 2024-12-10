@@ -29,10 +29,17 @@ func hurt(hit_points):
 			die()
 
 func die():
-	print("im dieded")
+	print("I'm dead")
+	# Access the ScoreLabel node under Camera3D
+	var score_label = $"../Camera3D/ScoreLabel"
+	if score_label.score > Global.high_score:
+		Global.high_score = score_label.score
+		print("New high score: %d" % Global.high_score)
 	$DeathTimer.start()
 	$DeathSound.play()
 	is_dead = true
+
+
 
 
 func _physics_process(delta: float) -> void:

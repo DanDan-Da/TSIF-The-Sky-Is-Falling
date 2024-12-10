@@ -63,7 +63,7 @@ func add_score(amount: int) -> void:
 func update_score() -> void:
 	text = \"Score: %d\" % score
 
-
+# Increment score on timer timeout
 func _on_score_timer_timeout() -> void:
 	score += 1
 	update_score()
