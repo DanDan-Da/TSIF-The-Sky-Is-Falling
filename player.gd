@@ -11,12 +11,17 @@ var health = 5
 var is_hurt = false
 var is_dead = false
 var canstep = true  # To play step sound
+var hearts_list : Array[TextureRect]
 
 # Timer for periodic damage
 var damage_timer: Timer
 var is_in_hurtbox = false  # Track if the player is in the hurtbox
 
-func _ready():
+func _ready() -> void:
+	var hearts_parent = $health_bar/HBoxContainer
+	for child in hearts_parent.get_children():
+		hearts_list.append(child)
+	print(hearts_list)
 	# Initialize the timer (Assuming the timer is a child of the player node)
 	damage_timer = $DamageTimer  # Timer node should be added in the player scene
 	# Connect the signal correctly with a Callable
@@ -28,15 +33,24 @@ func hurt(hit_points):
 		is_hurt = true
 		$HurtTimer.start()
 		print("HurtTimer Started")
+
 		if hit_points < health:
 			health -= hit_points
 			$HurtSound.play()
 			print("I'm hit")
-		else: 
+		else:
 			health = 0
-		$"../Camera3D/ProgressBar".value = health
+		
+		# Update the heart health bar
+		update_heart_display()
+
 		if health == 0:
 			die()
+
+func update_heart_display():
+	for i in range(hearts_list.size()):
+		hearts_list[i].visible = i < health
+
 func die():
 	print("I'm dead")
 	# Access the ScoreLabel node under Camera3D
