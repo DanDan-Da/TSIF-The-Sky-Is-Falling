@@ -46,6 +46,7 @@ position = Vector2(542, 427)
 stream = SubResource("AudioStreamRandomizer_cp70n")
 volume_db = -2.405
 pitch_scale = 0.86
+bus = &"SFX"
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]

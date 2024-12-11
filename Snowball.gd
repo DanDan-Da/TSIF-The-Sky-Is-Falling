@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 var Player
 
@@ -7,5 +7,14 @@ func _ready():
 
 func _on_hurt_box_body_entered(body):
 	if body.is_in_group("Player"):
-		print("Snowball!")
-		get_tree().call_group("Player","hurt", 1)
+		print("Player entered hurtbox!")
+		# Immediately damage the player on impact
+		body.hurt(1)  # Apply 1 damage immediately
+		# Start the damage timer for periodic damage
+		body.damage_timer.start()
+
+func _on_hurt_box_body_exited(body):
+	if body.is_in_group("Player"):
+		print("Player exited hurtbox!")
+		# Stop the damage timer when the player exits the hurtbox area
+		body.damage_timer.stop()

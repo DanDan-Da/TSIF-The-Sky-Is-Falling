@@ -46,3 +46,4 @@ transform = Transform3D(0.890465, 0, 0, 0, 0.890465, 0, 0, 0, 0.890465, 0, -0.35
 shape = SubResource("BoxShape3D_ettuc")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="HurtBox" to="." method="_on_hurt_box_body_exited"]

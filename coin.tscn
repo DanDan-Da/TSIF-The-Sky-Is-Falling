@@ -28,5 +28,6 @@ mesh = ExtResource("2_7qq8k")
 
 [node name="CoinCling" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_5p5c2")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

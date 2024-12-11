@@ -15,6 +15,11 @@ run/main_scene="res://title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MenuMusic="*res://menu_music.tscn"
+Global="*res://global.gd"
+
 [input]
 
 esc={

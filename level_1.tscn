@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://osnabbbsa74n"]
+[gd_scene load_steps=23 format=3 uid="uid://osnabbbsa74n"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_3om3o"]
 [ext_resource type="PackedScene" uid="uid://c1vgtr6waxedg" path="res://block.tscn" id="1_r01fo"]
@@ -34,12 +34,6 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fehcx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic200"]
-bg_color = Color(0.558644, 0.0751363, 0.190733, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd5y4"]
-bg_color = Color(0.901191, 0.275495, 0.333912, 1)
-
 [sub_resource type="Theme" id="Theme_os421"]
 default_base_scale = 0.08
 default_font = ExtResource("11_ysr0g")
@@ -63,7 +57,7 @@ func add_score(amount: int) -> void:
 func update_score() -> void:
 	text = \"Score: %d\" % score
 
-
+# Increment score on timer timeout
 func _on_score_timer_timeout() -> void:
 	score += 1
 	update_score()
@@ -102,6 +96,10 @@ transform = Transform3D(0.997692, 0, 0, 0, 0.997692, 0, 0, 0, 0.997692, 0, -3.98
 wait_time = 5.0
 autostart = true
 
+[node name="HeightTimer" type="Timer" parent="Objects"]
+wait_time = 30.0
+autostart = true
+
 [node name="CoinSpawner" type="Node3D" parent="."]
 script = ExtResource("7_s1oo2")
 
@@ -114,6 +112,7 @@ environment = SubResource("Environment_6fwil")
 [node name="Fade_transition" parent="." instance=ExtResource("8_yd3jk")]
 
 [node name="WorldBoarder" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3.1968, 0, 0, 0, 1, 0, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldBoarder"]
@@ -136,16 +135,8 @@ shape = SubResource("BoxShape3D_fehcx")
 transform = Transform3D(1.0356, 0, 0, 0, 1.0356, 0, 0, 0, 1.0356, 0.0664287, 1.70232, -0.533498)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.4619, 9.62556)
+transform = Transform3D(1, 0, 0, 0, 0.882152, 0.470966, 0, -0.470966, 0.882152, 0, 7.4619, 9.62556)
 script = ExtResource("12_7ehml")
-
-[node name="ProgressBar" type="ProgressBar" parent="Camera3D"]
-offset_right = 509.0
-offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxFlat_ic200")
-theme_override_styles/fill = SubResource("StyleBoxFlat_cd5y4")
-max_value = 5.0
-show_percentage = false
 
 [node name="ScoreLabel" type="Label" parent="Camera3D"]
 offset_left = 1002.0
@@ -157,7 +148,7 @@ text = "Score: 0"
 script = SubResource("GDScript_waqsy")
 
 [node name="ScoreTimer" type="Timer" parent="Camera3D/ScoreLabel"]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true
 
 [node name="MoveTimer" type="Timer" parent="Camera3D"]
@@ -174,7 +165,9 @@ stream = ExtResource("12_gae7c")
 volume_db = -9.398
 pitch_scale = 0.9
 autoplay = true
+bus = &"Music"
 
 [connection signal="timeout" from="Objects/FreezeTimer" to="Objects" method="_on_freeze_timer_timeout"]
+[connection signal="timeout" from="Objects/HeightTimer" to="Objects" method="_on_height_timer_timeout"]
 [connection signal="timeout" from="Camera3D/ScoreLabel/ScoreTimer" to="Camera3D/ScoreLabel" method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Camera3D/MoveTimer" to="Camera3D" method="_on_move_timer_timeout"]

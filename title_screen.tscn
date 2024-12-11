@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfx5lvq88fx51"]
+[gd_scene load_steps=15 format=3 uid="uid://cfx5lvq88fx51"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_vkuvb"]
 [ext_resource type="VideoStream" path="res://Start screen.ogv" id="2_ivxa3"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://u1fpyr7vkl1d" path="res://Sounds/Click2.mp3" id="7_oalsb"]
 [ext_resource type="AudioStream" uid="uid://ymqjcwb0v6q0" path="res://Sounds/Click3.mp3" id="8_scjj0"]
 [ext_resource type="AudioStream" uid="uid://c1wct7qxgmhsf" path="res://Sounds/Click.mp3" id="9_xaycs"]
-[ext_resource type="AudioStream" uid="uid://bhvkx2djrjhh8" path="res://Sounds/Audio.mp3" id="10_lg74j"]
+[ext_resource type="PackedScene" uid="uid://bee1mhs3a22ky" path="res://menu_music.tscn" id="10_5pspd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4oc5a"]
 render_priority = 0
@@ -28,6 +28,14 @@ glow_enabled = true
 glow_strength = 0.84
 glow_blend_mode = 1
 glow_hdr_scale = 2.44
+
+[sub_resource type="GDScript" id="GDScript_1ot0h"]
+script/source = "extends Label
+
+func _ready() -> void:
+	# Display the high score from the Global singleton
+	text = \"High Score: %d\" % Global.high_score
+"
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_vkuvb")
@@ -48,16 +56,31 @@ loop = true
 [node name="Start" type="Button" parent="."]
 modulate = Color(1, 1, 2, 1)
 material = SubResource("ShaderMaterial_4oc5a")
-offset_left = 394.0
-offset_top = 349.0
-offset_right = 709.0
-offset_bottom = 499.0
+offset_left = 395.0
+offset_top = 274.0
+offset_right = 710.0
+offset_bottom = 424.0
 theme_override_colors/font_color = Color(0.983007, 0.993056, 1, 1)
 theme_override_colors/font_outline_color = Color(0.349, 0.267, 1, 0.833)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_116nx")
 theme_override_font_sizes/font_size = 48
 text = "Start Game"
+flat = true
+
+[node name="Options" type="Button" parent="."]
+modulate = Color(1, 1, 2, 1)
+material = SubResource("ShaderMaterial_4oc5a")
+offset_left = 391.0
+offset_top = 376.0
+offset_right = 706.0
+offset_bottom = 526.0
+theme_override_colors/font_color = Color(0.983007, 0.993056, 1, 1)
+theme_override_colors/font_outline_color = Color(0.349, 0.267, 1, 0.833)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_116nx")
+theme_override_font_sizes/font_size = 48
+text = "Options"
 flat = true
 
 [node name="Quit" type="Button" parent="."]
@@ -83,18 +106,18 @@ visible = false
 [node name="Controls" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 714.0
-offset_top = 10.0
-offset_right = 1141.0
-offset_bottom = 651.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 432.0
+offset_bottom = 644.0
 
 [node name="TextureRect" type="TextureRect" parent="Controls"]
-modulate = Color(1, 1, 1, 0.862745)
+modulate = Color(0.647059, 0.643137, 0.968627, 0.862745)
 layout_mode = 0
-offset_left = 207.0
-offset_top = 507.0
-offset_right = 390.0
-offset_bottom = 640.0
+offset_left = 94.0
+offset_top = 470.0
+offset_right = 374.0
+offset_bottom = 644.0
 texture = ExtResource("5_rog2a")
 expand_mode = 1
 
@@ -103,19 +126,28 @@ position = Vector2(542, 427)
 stream = SubResource("AudioStreamRandomizer_p1rrv")
 volume_db = -2.405
 pitch_scale = 0.86
+bus = &"SFX"
 
 [node name="QuitTimer" type="Timer" parent="."]
 wait_time = 0.198
 
-[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_lg74j")
-volume_db = 10.27
-autoplay = true
+[node name="MenuMusic" parent="." instance=ExtResource("10_5pspd")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nncyf")
 
+[node name="HighScoreLabel" type="Label" parent="."]
+offset_left = 19.0
+offset_right = 130.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.876698, 0.91246, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.266667, 0.454902, 0.92549, 1)
+theme_override_font_sizes/font_size = 23
+text = "Highscore"
+script = SubResource("GDScript_1ot0h")
+
 [connection signal="pressed" from="Start" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
 [connection signal="timeout" from="QuitTimer" to="." method="_on_quit_timer_timeout"]
