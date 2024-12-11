@@ -137,8 +137,12 @@ wait_time = 0.198
 environment = SubResource("Environment_nncyf")
 
 [node name="HighScoreLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 19.0
+offset_right = 130.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.876698, 0.91246, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.266667, 0.454902, 0.92549, 1)
+theme_override_font_sizes/font_size = 23
 text = "Highscore"
 script = SubResource("GDScript_1ot0h")
 

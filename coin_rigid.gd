@@ -28,7 +28,7 @@ func _on_collect_box_body_entered(body: Node3D) -> void:
 	# Add visual and sound effects for coin collection
 	var tween = get_tree().create_tween()
 	var target_position = global_transform.origin + Vector3(0, 2.5, 0)  # Move upwards in global space
-	tween.tween_property(self, "global_transform:origin", target_position, 0.25)  # Use global_transform for precise motion
+	tween.tween_property(self, "global_transform:origin", target_position, 0.3)  # Use global_transform for precise motion
 
 	# Play the sound effect
 	$CoinCling.play()

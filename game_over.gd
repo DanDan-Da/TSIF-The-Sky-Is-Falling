@@ -1,6 +1,7 @@
 extends Node2D
 var button_type = null
 
+
 func _on_try_again_pressed() -> void:
 	button_type = "try"
 	$Click.play()

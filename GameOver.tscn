@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwl2iq7leyw7r"]
+[gd_scene load_steps=16 format=3 uid="uid://bwl2iq7leyw7r"]
 
 [ext_resource type="VideoStream" path="res://DeathScreen.ogv" id="1_0i2ik"]
 [ext_resource type="Script" path="res://game_over.gd" id="1_sr26u"]
@@ -43,6 +43,23 @@ glow_map = SubResource("GradientTexture1D_ondw1")
 fog_enabled = true
 fog_light_color = Color(0.709804, 0, 0.00392157, 1)
 
+[sub_resource type="GDScript" id="GDScript_pujp3"]
+script/source = "extends Label
+
+func _ready() -> void:
+	# Display the last score from the Global singleton
+	text = \"Your Score: %d\" % Global.last_score
+"
+
+[sub_resource type="GDScript" id="GDScript_i2k57"]
+script/source = "extends Label
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	# Display the high score from the Global singleton
+	text = \"High Score: %d\" % Global.high_score
+"
+
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_sr26u")
 
@@ -66,8 +83,8 @@ offset_left = 394.0
 offset_top = 327.0
 offset_right = 709.0
 offset_bottom = 477.0
-theme_override_colors/font_color = Color(1, 0.446302, 0.431782, 1)
-theme_override_colors/font_outline_color = Color(0.52599, 0.00374833, 2.88785e-07, 1)
+theme_override_colors/font_color = Color(0.454902, 0.00784314, 0, 1)
+theme_override_colors/font_outline_color = Color(0.27451, 0, 0.0745098, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_4d75n")
 theme_override_font_sizes/font_size = 40
@@ -81,8 +98,8 @@ offset_left = 394.0
 offset_top = 434.0
 offset_right = 709.0
 offset_bottom = 584.0
-theme_override_colors/font_color = Color(1, 0.446302, 0.431782, 1)
-theme_override_colors/font_outline_color = Color(0.52599, 0.00374833, 2.88785e-07, 1)
+theme_override_colors/font_color = Color(0.454902, 0.00784314, 0, 1)
+theme_override_colors/font_outline_color = Color(0.27451, 0, 0.0745098, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_4d75n")
 theme_override_font_sizes/font_size = 40
@@ -96,8 +113,8 @@ offset_left = 394.0
 offset_top = 530.0
 offset_right = 709.0
 offset_bottom = 680.0
-theme_override_colors/font_color = Color(1, 0.446302, 0.431782, 1)
-theme_override_colors/font_outline_color = Color(0.52599, 0.00374833, 2.88785e-07, 1)
+theme_override_colors/font_color = Color(0.454902, 0.00784314, 0, 1)
+theme_override_colors/font_outline_color = Color(0.27451, 0, 0.0745098, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_4d75n")
 theme_override_font_sizes/font_size = 40
@@ -119,6 +136,28 @@ wait_time = 0.654
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cdxyk")
+
+[node name="LastScoreLabel" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 38.0
+offset_right = 130.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0.568689, 0.000922606, 0.18641, 1)
+theme_override_colors/font_shadow_color = Color(0.454902, 0.00784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "LastScore"
+script = SubResource("GDScript_pujp3")
+
+[node name="HighScoreLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = -1.0
+offset_right = 129.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.568689, 0.000922606, 0.18641, 1)
+theme_override_colors/font_shadow_color = Color(0.454902, 0.00784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "HighScore"
+script = SubResource("GDScript_i2k57")
 
 [connection signal="pressed" from="TryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="TitleScreen" to="." method="_on_title_screen_pressed"]
