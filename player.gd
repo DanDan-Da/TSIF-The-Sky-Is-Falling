@@ -10,12 +10,7 @@ var rotation_speed = 10  # Speed the character rotates
 var health = 5
 var is_hurt = false
 var is_dead = false
-<<<<<<< HEAD
-var canstep = true #to play step sound
-var hearts_list : Array[TextureRect]
-=======
 var canstep = true  # To play step sound
->>>>>>> fc4004800e0bf4f8aeec6c0a51a923d019e2ed93
 
 # Timer for periodic damage
 var damage_timer: Timer
@@ -33,33 +28,15 @@ func hurt(hit_points):
 		is_hurt = true
 		$HurtTimer.start()
 		print("HurtTimer Started")
-
 		if hit_points < health:
 			health -= hit_points
 			$HurtSound.play()
 			print("I'm hit")
-<<<<<<< HEAD
-		else:
-				health = 0
-			
-
-		# Update the heart health bar
-		update_heart_display()
-
-		if health == 0:
-			die()
-
-func update_heart_display():
-	for i in range(hearts_list.size()):
-		hearts_list[i].visible = i < health
-
-=======
 		else: 
 			health = 0
 		$"../Camera3D/ProgressBar".value = health
 		if health == 0:
 			die()
->>>>>>> fc4004800e0bf4f8aeec6c0a51a923d019e2ed93
 func die():
 	print("I'm dead")
 	# Access the ScoreLabel node under Camera3D
@@ -76,17 +53,9 @@ func die():
 	$DeathSound.play()
 	is_dead = true
 
-<<<<<<< HEAD
-func _ready() -> void:
-	var hearts_parent = $health_bar/HBoxContainer
-	for child in hearts_parent.get_children():
-		hearts_list.append(child)
-		print(hearts_list)
-=======
 func _on_damage_timer_timeout():
 	# Apply damage every time the timer times out
 	hurt(1)  # Apply 1 damage per interval
->>>>>>> fc4004800e0bf4f8aeec6c0a51a923d019e2ed93
 
 func _physics_process(delta: float) -> void:
 	# Add gravity if the player is not on the floor

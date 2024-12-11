@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://qpwid257x8d5"]
+[gd_scene load_steps=16 format=3 uid="uid://qpwid257x8d5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kgqgy"]
 [ext_resource type="PackedScene" uid="uid://dyk68rhre2rqk" path="res://3D models/Player.glb" id="2_u27l8"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://bidp3ikbdddf6" path="res://Sounds/Step1.mp3" id="9_pky5m"]
 [ext_resource type="AudioStream" uid="uid://dqwkjm2par5ux" path="res://Sounds/Step2.mp3" id="10_anuec"]
 [ext_resource type="AudioStream" uid="uid://7buke1dxmy08" path="res://Sounds/Step3.mp3" id="11_jgyru"]
-[ext_resource type="PackedScene" uid="uid://dxk1213wvsm8s" path="res://heart.tscn" id="12_2mq0w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bap2c"]
 
@@ -72,56 +71,8 @@ bus = &"SFX"
 [node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.503
 
-<<<<<<< HEAD
-[node name="health_bar" type="CanvasLayer" parent="."]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="health_bar"]
-offset_right = 166.0
-offset_bottom = 30.0
-
-[node name="heart" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart" instance=ExtResource("12_2mq0w")]
-position = Vector2(13, 14.5)
-scale = Vector2(1.625, 1.8125)
-
-[node name="heart2" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart2" instance=ExtResource("12_2mq0w")]
-position = Vector2(13, 14.5)
-scale = Vector2(1.625, 1.8125)
-
-[node name="heart3" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart3" instance=ExtResource("12_2mq0w")]
-position = Vector2(13, 14.5)
-scale = Vector2(1.625, 1.8125)
-
-[node name="heart4" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart4" instance=ExtResource("12_2mq0w")]
-position = Vector2(13, 14.5)
-scale = Vector2(1.625, 1.8125)
-
-[node name="heart5" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart5" instance=ExtResource("12_2mq0w")]
-position = Vector2(13, 14.5)
-scale = Vector2(1.625, 1.8125)
-=======
 [node name="DamageTimer" type="Timer" parent="."]
 wait_time = 2.0
->>>>>>> fc4004800e0bf4f8aeec6c0a51a923d019e2ed93
 
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
