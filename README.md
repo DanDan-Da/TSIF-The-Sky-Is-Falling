@@ -1,7 +1,7 @@
 # 🎮 The Sky Is Falling
 
 **The Sky Is Falling** is a 2D survival game created with **Godot Engine** as a team project.  
-The goal is simple — avoid falling objects, collect coins, and survive as long as possible!  
+The goal is simple: avoid falling objects, collect coins, and survive as long as possible!  
 The longer you stay alive, the higher your score.
 
 ## 🧩 Features
